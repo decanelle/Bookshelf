@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707112247) do
+ActiveRecord::Schema.define(version: 20140707121051) do
 
   create_table "books", force: true do |t|
     t.string   "title"
     t.string   "author"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "books_users", id: false, force: true do |t|
+    t.integer "book_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "users", force: true do |t|
@@ -27,8 +32,4 @@ ActiveRecord::Schema.define(version: 20140707112247) do
     t.datetime "updated_at"
   end
 
-  create_join_table :books, :users do |t|
-    t.index :book_id
-    t.index :user_id
-end
 end
