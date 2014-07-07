@@ -27,4 +27,8 @@ ActiveRecord::Schema.define(version: 20140707112247) do
     t.datetime "updated_at"
   end
 
+  create_join_table :books, :users do |t|
+    t.index :book_id
+    t.index :user_id
+end
 end
